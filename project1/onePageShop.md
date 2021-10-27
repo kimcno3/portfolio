@@ -1,5 +1,6 @@
 # :pushpin: 원페이지 쇼핑몰
-> 스파르타 코딩클럽 웹개발 종합반 8회차
+> 링크 : [kimcno3.shop](http://kimcno3.shop/)
+
 </br>
 
 ## 1. 제작 기간 & 참여 인원
@@ -21,67 +22,64 @@
   - jQeury
   - Ajax
 
+
 </br>
 
 ## 3. 핵심 기능 
-주문자의 이름, 수량, 주소, 전화번호를 입력받아 DB에 데이터를 저장하고 주문내역을 같은 페이지 하단에 표 형식으로 보여줍니다.
+- 주문자 이름, 주문 개수, 주소, 전화번호를 입력받고 이를 DB에 저장한다.
+- 저장된 데이터를 화면 하단에 목록으로 보여준다.
+- 실시간 환율을 화면에 보여준다.
 
 <details>
-<summary><b>핵심 기능 설명 펼치기</b></summary>
-<div markdown="1">
+  <summary><b>핵심 기능 설명 펼치기</b></summary>
+  <div markdown="1">
 
-### 3.1. 전체 흐름
-![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8793b9cd-1f21-400e-a3ee-b8258e637e83%2FUntitled.png?table=block&id=4aaaf761-3cc0-456e-92fb-9e99e1e52505&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
+<br>
 
-- **Flask(app.py)** :pushpin: [코드확인]() 
-  - Flask 서버를 구축하여 API 생성
+  <!-- ### 3.1. 전체 흐름
+  ![전체 흐름](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F04945ba3-ac4a-482e-9f77-a794981de558%2FUntitled.png?table=block&id=3d955162-162a-439b-b12a-693f35bd9f8e&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
 
-- **HTML(index.html)** :pushpin: [코드확인]() 
-  - 클라이언트로부터 주문을 위한 데이터를 입력받고 서버에 요청
-  - DB에 저장된 데이터를 다시 받아와 페이지 하단에 출력
-  - 실시간 달러 환율을 서버에 요청
+  - **서버** 
+    - flask를 통해 API을 구축
+    - 클라이언트가 요청하는 데이터를 API를 통해 전송
 
-- **mongoDB** :pushpin: [코드확인]() 
-  - 클라이언트로부터 받아온 데이터를 저장
-  - 저장된 데이터를 구분하여 추출
+  - **클라이언트** 
+    - 원하는 데이터를 서버에 요청
+    - API를 통해 데이터를 받아오고 화면에 출력한다.
 
-### 3.2. 데이터 저장
-![]()
+  - **DataBase** 
+    - 주문 내역을 구분하여 저장
+    - 저장된 데이터를 필요한 형태로 찾아준다. -->
 
-- **서버** :pushpin: [코드 확인]()
-  - 브라우저에서 보낸 데이터를 이름, 수량, 주소, 전화번호로 구분하여 DB에 저장
-  - 저장이 완료되면 "주문 완료" 메세지 return 
-- **클라이언트** :pushpin: [코드 확인]()
-  - 브라우저에서 입력받은 이름, 수량, 주소, 전화번호 데이터를 각 변수에 담아 서버에 POST 요청
-  - 보낸 데이터가 DB에 정상적으로 저장되었다면 return 받은 메세지를 alert
-  - 화면 새로고침
+  ### 3.1. 주문하기
+  - **서버** :pushpin: [코드 확인]()
+    - 브라우저에서 보낸 데이터를 이름, 수량, 주소, 전화번호로 구분하여 DB에 저장
+    - 저장이 완료되면 "주문 완료" 메세지 return 
+  - **클라이언트** :pushpin: [코드 확인]()
+    - 브라우저에서 입력받은 이름, 수량, 주소, 전화번호 데이터를 각 변수에 담아 서버에 **POST** 요청
+    - 보낸 데이터가 DB에 정상적으로 저장되었다면 return 받은 메세지를 alert
+    - 화면 새로고침
 
-### 3.3. 데이터 출력
+  ### 3.2. 주문 목록 보여주기
+  - **서버** :pushpin: [코드 확인]()
+    - DB에 저장된 데이터 전체를 클라이언트에 return
 
-![]()
+  - **클라이언트** :pushpin: [코드 확인]()
+    - 서버에서 전송한 데이터를 이름, 수량, 주소, 전화번호로 구분하여 변수에 할당
+    - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
 
-- **서버** :pushpin: [코드 확인]()
-  - DB에 저장된 데이터 전체를 클라이언트에 return
+  ### 3.3. 환율 계산하기
+  - **클라이언트** :pushpin: [코드 확인]()
+    - JSON 형식 데이터가 저장된 url에 GET 요청
+    - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
 
-- **클라이언트** :pushpin: [코드 확인]()
-  - 서버에서 전송한 데이터를 이름, 수량, 주소, 전화번호로 구분하여 변수에 할당
-  - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
-
-### 3.2. 환율 계산
-![]()
-
-- **클라이언트** :pushpin: [코드 확인]()
-  - JSON 형식 데이터가 저장된 url에 GET 요청
-  - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
-
-</div>
+  </div>
 </details>
-<!-- ==================================================================== -->
 
 </br>
 
-## 5. 핵심 트러블 슈팅
-### 5.1. 컨텐츠 필터와 페이징 처리 문제
+## 4. 핵심 트러블 슈팅
+### 4.1. 컨텐츠 필터와 페이징 처리 문제
 - 저는 이 서비스가 페이스북이나 인스타그램 처럼 가볍게, 자주 사용되길 바라는 마음으로 개발했습니다.  
 때문에 페이징 처리도 무한 스크롤을 적용했습니다.
 
@@ -95,48 +93,9 @@
 <summary><b>기존 코드</b></summary>
 <div markdown="1">
 
-~~~java
-/**
- * 게시물 Top10 (기준: 댓글 수 + 좋아요 수)
- * @return 인기순 상위 10개 게시물
- */
-public Page<PostResponseDto> listTopTen() {
-
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "rankPoint", "likeCnt");
-    return postRepository.findAll(pageRequest).map(PostResponseDto::new);
-}
-
-/**
- * 게시물 필터 (Tag Name)
- * @param tagName 게시물 박스에서 클릭한 태그 이름
- * @param pageable 페이징 처리를 위한 객체
- * @return 해당 태그가 포함된 게시물 목록
- */
-public Page<PostResponseDto> listFilteredByTagName(String tagName, Pageable pageable) {
-
-    return postRepository.findAllByTagName(tagName, pageable).map(PostResponseDto::new);
-}
-
-// ... 게시물 필터 (Member) 생략 
-
-/**
- * 게시물 필터 (Date)
- * @param createdDate 게시물 박스에서 클릭한 날짜
- * @return 해당 날짜에 등록된 게시물 목록
- */
-public List<PostResponseDto> listFilteredByDate(String createdDate) {
-
-    // 등록일 00시부터 24시까지
-    LocalDateTime start = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MIN);
-    LocalDateTime end = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MAX);
-
-    return postRepository
-                    .findAllByCreatedAtBetween(start, end)
-                    .stream()
-                    .map(PostResponseDto::new)
-                    .collect(Collectors.toList());
-    }
-~~~
+``` jsx
+// 코드 작성란
+```
 
 </div>
 </details>
@@ -149,226 +108,23 @@ public List<PostResponseDto> listFilteredByDate(String createdDate) {
 <summary><b>개선된 코드</b></summary>
 <div markdown="1">
 
-~~~java
-/**
- * 게시물 필터 (Tag Name)
- */
-@Override
-public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
-
-    QueryResults<Post> results = queryFactory
-            .selectFrom(post)
-            .innerJoin(postTag)
-                .on(post.idx.eq(postTag.post.idx))
-            .innerJoin(tag)
-                .on(tag.idx.eq(postTag.tag.idx))
-            .where(tag.name.eq(tagName))
-            .orderBy(post.idx.desc())
-                .limit(pageable.getPageSize())
-                .offset(pageable.getOffset())
-            .fetchResults();
-
-    return new PageImpl<>(results.getResults(), pageable, results.getTotal());
-}
+~~~ py
+# 코드 작성란
 ~~~
+</div>
+</details>
+
+<br>
+
+## 5. 그 외 트러블 슈팅
+<details>
+<summary>트러블1</summary>
+<div markdown="1">
 
 </div>
 </details>
 
-</br>
+<br>
 
-## 6. 그 외 트러블 슈팅
-<details>
-<summary>npm run dev 실행 오류</summary>
-<div markdown="1">
-
-- Webpack-dev-server 버전을 3.0.0으로 다운그레이드로 해결
-- `$ npm install —save-dev webpack-dev-server@3.0.0`
-
-</div>
-</details>
-
-<details>
-<summary>vue-devtools 크롬익스텐션 인식 오류 문제</summary>
-<div markdown="1">
-  
-  - main.js 파일에 `Vue.config.devtools = true` 추가로 해결
-  - [https://github.com/vuejs/vue-devtools/issues/190](https://github.com/vuejs/vue-devtools/issues/190)
-  
-</div>
-</details>
-
-<details>
-<summary>ElementUI input 박스에서 `v-on:keyup.enter="메소드명"`이 정상 작동 안하는 문제</summary>
-<div markdown="1">
-  
-  - `v-on:keyup.enter.native=""` 와 같이 .native 추가로 해결
-  
-</div>
-</details>
-
-<details>
-<summary> Post 목록 출력시에 Member 객체 출력 에러 </summary>
-<div markdown="1">
-  
-  - 에러 메세지(500에러)
-    - No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationConfig.SerializationFeature.FAIL_ON_EMPTY_BEANS)
-  - 해결
-    - Post 엔티티에 @ManyToOne 연관관계 매핑을 LAZY 옵션에서 기본(EAGER)옵션으로 수정
-  
-</div>
-</details>
-    
-<details>
-<summary> 프로젝트를 git init으로 생성 후 발생하는 npm run dev/build 오류 문제 </summary>
-<div markdown="1">
-  
-  ```jsx
-    $ npm run dev
-    npm ERR! path C:\Users\integer\IdeaProjects\pilot\package.json
-    npm ERR! code ENOENT
-    npm ERR! errno -4058
-    npm ERR! syscall open
-    npm ERR! enoent ENOENT: no such file or directory, open 'C:\Users\integer\IdeaProjects\pilot\package.json'
-    npm ERR! enoent This is related to npm not being able to find a file.
-    npm ERR! enoent
-
-    npm ERR! A complete log of this run can be found in:
-    npm ERR!     C:\Users\integer\AppData\Roaming\npm-cache\_logs\2019-02-25T01_23_19_131Z-debug.log
-  ```
-  
-  - 단순히 npm run dev/build 명령을 입력한 경로가 문제였다.
-   
-</div>
-</details>    
-
-<details>
-<summary> 태그 선택후 등록하기 누를 때 `object references an unsaved transient instance - save the transient instance before flushing` 오류</summary>
-<div markdown="1">
-  
-  - Post 엔티티의 @ManyToMany에 영속성 전이(cascade=CascadeType.ALL) 추가
-    - JPA에서 Entity를 저장할 때 연관된 모든 Entity는 영속상태여야 한다.
-    - CascadeType.PERSIST 옵션으로 부모와 자식 Enitity를 한 번에 영속화할 수 있다.
-    - 참고
-        - [https://stackoverflow.com/questions/2302802/object-references-an-unsaved-transient-instance-save-the-transient-instance-be/10680218](https://stackoverflow.com/questions/2302802/object-references-an-unsaved-transient-instance-save-the-transient-instance-be/10680218)
-   
-</div>
-</details>    
-
-<details>
-<summary> JSON: Infinite recursion (StackOverflowError)</summary>
-<div markdown="1">
-  
-  - @JsonIgnoreProperties 사용으로 해결
-    - 참고
-        - [http://springquay.blogspot.com/2016/01/new-approach-to-solve-json-recursive.html](http://springquay.blogspot.com/2016/01/new-approach-to-solve-json-recursive.html)
-        - [https://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue](https://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue)
-        
-</div>
-</details>  
-    
-<details>
-<summary> H2 접속문제</summary>
-<div markdown="1">
-  
-  - H2의 JDBC URL이 jdbc:h2:~/test 으로 되어있으면 jdbc:h2:mem:testdb 으로 변경해서 접속해야 한다.
-        
-</div>
-</details> 
-    
-<details>
-<summary> 컨텐츠수정 모달창에서 태그 셀렉트박스 드랍다운이 뒤쪽에 보이는 문제</summary>
-<div markdown="1">
-  
-   - ElementUI의 Global Config에 옵션 추가하면 해결
-     - main.js 파일에 `Vue.us(ElementUI, { zIndex: 9999 });` 옵션 추가(9999 이하면 안됌)
-   - 참고
-     - [https://element.eleme.io/#/en-US/component/quickstart#global-config](https://element.eleme.io/#/en-US/component/quickstart#global-config)
-        
-</div>
-</details> 
-
-<details>
-<summary> HTTP delete Request시 개발자도구의 XHR(XMLHttpRequest )에서 delete요청이 2번씩 찍히는 이유</summary>
-<div markdown="1">
-  
-  - When you try to send a XMLHttpRequest to a different domain than the page is hosted, you are violating the same-origin policy. However, this situation became somewhat common, many technics are introduced. CORS is one of them.
-
-        In short, server that you are sending the DELETE request allows cross domain requests. In the process, there should be a **preflight** call and that is the **HTTP OPTION** call.
-
-        So, you are having two responses for the **OPTION** and **DELETE** call.
-
-        see [MDN page for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
-
-    - 출처 : [https://stackoverflow.com/questions/35808655/why-do-i-get-back-2-responses-of-200-and-204-when-using-an-ajax-call-to-delete-o](https://stackoverflow.com/questions/35808655/why-do-i-get-back-2-responses-of-200-and-204-when-using-an-ajax-call-to-delete-o)
-        
-</div>
-</details> 
-
-<details>
-<summary> 이미지 파싱 시 og:image 경로가 달라서 제대로 파싱이 안되는 경우</summary>
-<div markdown="1">
-  
-  - UserAgent 설정으로 해결
-        - [https://www.javacodeexamples.com/jsoup-set-user-agent-example/760](https://www.javacodeexamples.com/jsoup-set-user-agent-example/760)
-        - [http://www.useragentstring.com/](http://www.useragentstring.com/)
-        
-</div>
-</details> 
-    
-<details>
-<summary> 구글 로그인으로 로그인한 사용자의 정보를 가져오는 방법이 스프링 2.0대 버전에서 달라진 것</summary>
-<div markdown="1">
-  
-  - 1.5대 버전에서는 Controller의 인자로 Principal을 넘기면 principal.getName(0에서 바로 꺼내서 쓸 수 있었는데, 2.0대 버전에서는 principal.getName()의 경우 principal 객체.toString()을 반환한다.
-    - 1.5대 버전에서 principal을 사용하는 경우
-    - 아래와 같이 사용했다면,
-
-    ```jsx
-    @RequestMapping("/sso/user")
-    @SuppressWarnings("unchecked")
-    public Map<String, String> user(Principal principal) {
-        if (principal != null) {
-            OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
-            Authentication authentication = oAuth2Authentication.getUserAuthentication();
-            Map<String, String> details = new LinkedHashMap<>();
-            details = (Map<String, String>) authentication.getDetails();
-            logger.info("details = " + details);  // id, email, name, link etc.
-            Map<String, String> map = new LinkedHashMap<>();
-            map.put("email", details.get("email"));
-            return map;
-        }
-        return null;
-    }
-    ```
-
-    - 2.0대 버전에서는
-    - 아래와 같이 principal 객체의 내용을 꺼내 쓸 수 있다.
-
-    ```jsx
-    UsernamePasswordAuthenticationToken token =
-                    (UsernamePasswordAuthenticationToken) SecurityContextHolder
-                            .getContext().getAuthentication();
-            Map<String, Object> map = (Map<String, Object>) token.getPrincipal();
-
-            String email = String.valueOf(map.get("email"));
-            post.setMember(memberRepository.findByEmail(email));
-    ```
-        
-</div>
-</details> 
-    
-<details>
-<summary> 랭킹 동점자 처리 문제</summary>
-<div markdown="1">
-  
-  - PageRequest의 Sort부분에서 properties를 "rankPoint"를 주고 "likeCnt"를 줘서 댓글수보다 좋아요수가 우선순위 갖도록 설정.
-  - 좋아요 수도 똑같다면..........
-        
-</div>
-</details> 
-    
-</br>
-
-## 6. 회고 / 느낀점
->프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
+## 6. 추후 발전방향
+>
