@@ -24,40 +24,59 @@
 </br>
 
 ## 3. 핵심 기능 
-주문자의 이름과 주소, 전화번호, 수량을 입력받아 DB에 데이터를 저장하고 주문내역을 같은 페이지 하단에 표 형식으로 보여줍니다.
-<!-- 
+주문자의 이름, 수량, 주소, 전화번호를 입력받아 DB에 데이터를 저장하고 주문내역을 같은 페이지 하단에 표 형식으로 보여줍니다.
+
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
-<div markdown="1"> -->
+<div markdown="1">
 
 ### 3.1. 전체 흐름
-- HTML 요청 시
-![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff4770f1b-1509-4e69-b971-1cd5ceb258a6%2FUntitled.png?table=block&id=f41159c1-7785-4958-b6f0-eca3b505852b&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
-- 데이터 요청 시 
-![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe495bccc-7a19-40e6-8669-0e59d5506bfd%2FUntitled.png?table=block&id=ccbb3a41-8462-43dc-9242-5eaec52145e8&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
+![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8793b9cd-1f21-400e-a3ee-b8258e637e83%2FUntitled.png?table=block&id=4aaaf761-3cc0-456e-92fb-9e99e1e52505&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
+
+- **Flask(app.py)** :pushpin: [코드확인]() 
+  - Flask 서버를 구축하여 API 생성
+
+- **HTML(index.html)** :pushpin: [코드확인]() 
+  - 클라이언트로부터 주문을 위한 데이터를 입력받고 서버에 요청
+  - DB에 저장된 데이터를 다시 받아와 페이지 하단에 출력
+  - 실시간 달러 환율을 서버에 요청
+
+- **mongoDB** :pushpin: [코드확인]() 
+  - 클라이언트로부터 받아온 데이터를 저장
+  - 저장된 데이터를 구분하여 추출
 
 ### 3.2. 데이터 저장
-![](https://github.com/kimcno3/portfolio/blob/main/postAPI.JPG?raw=true)
-- **URL 정규식 체크** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b587bbff4dce02e3bec4f4787151a9b6fa326319/frontend/src/components/PostInput.vue#L67)
-  - Vue.js로 렌더링된 화면단에서, 사용자가 등록을 시도한 URL의 모양새를 정규식으로 확인합니다.
-  - URL의 모양새가 아닌 경우, 에러 메세지를 띄웁니다.
+![]()
 
-- **Axios 비동기 요청** :pushpin: [코드 확인]()
-  - URL의 모양새인 경우, 컨텐츠를 등록하는 POST 요청을 비동기로 날립니다.
+- **서버** :pushpin: [코드 확인]()
+  - 브라우저에서 보낸 데이터를 이름, 수량, 주소, 전화번호로 구분하여 DB에 저장
+  - 저장이 완료되면 "주문 완료" 메세지 return 
+- **클라이언트** :pushpin: [코드 확인]()
+  - 브라우저에서 입력받은 이름, 수량, 주소, 전화번호 데이터를 각 변수에 담아 서버에 POST 요청
+  - 보낸 데이터가 DB에 정상적으로 저장되었다면 return 받은 메세지를 alert
+  - 화면 새로고침
 
 ### 3.3. 데이터 출력
 
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
+![]()
 
-- **요청 처리** :pushpin: [코드 확인](https://github.com/Integerous/goQuality/blob/b2c5e60761b6308f14eebe98ccdb1949de6c4b99/src/main/java/goQuality/integerous/controller/PostRestController.java#L55)
-  - Controller에서는 요청을 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
+- **서버** :pushpin: [코드 확인]()
+  - DB에 저장된 데이터 전체를 클라이언트에 return
 
-- **결과 응답** :pushpin: [코드 확인]()
-  - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
+- **클라이언트** :pushpin: [코드 확인]()
+  - 서버에서 전송한 데이터를 이름, 수량, 주소, 전화번호로 구분하여 변수에 할당
+  - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
 
+### 3.2. 환율 계산
+![]()
+
+- **클라이언트** :pushpin: [코드 확인]()
+  - JSON 형식 데이터가 저장된 url에 GET 요청
+  - temp_html, append() 활용하여 가져온 데이터와 함께 동적으로 html 추가
 
 </div>
 </details>
+<!-- ==================================================================== -->
 
 </br>
 
