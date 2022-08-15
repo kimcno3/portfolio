@@ -1,5 +1,4 @@
 # :pushpin: 원페이지 쇼핑몰
-> 페이지 링크 : [http://kimcno3.shop/](http://kimcno3.shop/)
 
 </br>
 
@@ -11,13 +10,13 @@
 
 ## 2. 사용 기술
 #### `Front-end`
-  - HTML, CSS
   - Javascript
+  - JQuery
 #### `Back-end`
   - Python3
+  - Flask
   - MongoDB
   - AWS
-
 
 </br>
 
@@ -31,7 +30,7 @@
   <div markdown="1">
 
 <br>
-
+    
   ### 3.0. 기본 구성
   ![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F04945ba3-ac4a-482e-9f77-a794981de558%2FUntitled.png?table=block&id=3d955162-162a-439b-b12a-693f35bd9f8e&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
 
