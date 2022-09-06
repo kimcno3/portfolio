@@ -6,14 +6,15 @@
 
 ## 2. 사용 기술
 #### `Front-end`
-  - HTML, CSS
   - Javascript
+  - JQuery
 #### `Back-end`
   - Python3
+  - Flask
   - MongoDB
   - Flask
   - AWS
-
+  - 
 ## 3. 핵심 기능 
 - 주문자 이름, 주문 개수, 주소, 전화번호를 입력받고 이를 DB에 저장한다.
 - 저장된 데이터를 화면 하단에 목록으로 보여준다.
@@ -24,7 +25,7 @@
   <div markdown="1">
 
 <br>
-
+    
   ### 3.0. 기본 구성
   ![](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F04945ba3-ac4a-482e-9f77-a794981de558%2FUntitled.png?table=block&id=3d955162-162a-439b-b12a-693f35bd9f8e&spaceId=83c75a39-3aba-4ba4-a792-7aefe4b07895&width=2000&userId=2f0da12b-1a66-4b50-bcbe-b24c58210e93&cache=v2)
 
