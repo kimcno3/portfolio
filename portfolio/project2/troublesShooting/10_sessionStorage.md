@@ -22,7 +22,7 @@
 
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FboFlh4%2FbtqESXc9LPa%2Fc6j2klIYPLK1ni9QAmXLUk%2Fimg.png)
 
-> **로드 밸런서**
+#### **로드 밸런서**
 Scale Out 방식처럼 여러 서버를 하나의 서비스를 위해 활용하기 위해선 로드 밸런서라는 것을 도입할 필요가 있는데, 서버의 부하를 분산하는 역할을 하는 것을 의미합니다.
 
 Sticky Session 방식은 각 세션에 저장된 데이터가 상이할 수 있다는 단점을 극복하기 위해 요청을 처리해준 사용자별 접근 가능한 WAS를 지정하고 해당 WAS에서만 요청 처리가 되도록 합니다.
