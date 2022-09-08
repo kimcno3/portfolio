@@ -1,4 +1,4 @@
-# :pushpin: soldout(e-commerce 프로젝트)
+# :pushpin: soldout(의류 e-commerce 프로젝트)
 > - GitHub : https://github.com/f-lab-edu/soldout
 > - Wiki : https://github.com/f-lab-edu/soldout/wiki
 

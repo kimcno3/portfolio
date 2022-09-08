@@ -1,4 +1,4 @@
-# :pushpin: 원페이지 쇼핑몰(e-commerce 프로젝트)₩
+# :pushpin: 원페이지 쇼핑몰
 > Github : https://github.com/kimcno3/sparta/tree/main/homework
 
 ## :paperclip: 제작 기간 및 참여 인원

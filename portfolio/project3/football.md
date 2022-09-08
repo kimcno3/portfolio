@@ -1,4 +1,4 @@
-# :pushpin: football(community 프로젝트)
+# :pushpin: football(스포츠 커뮤니티 및 채팅 프로젝트)
 > - GitHub : https://github.com/f-lab-edu/football
 > - Wiki : https://github.com/f-lab-edu/football/wiki
 
