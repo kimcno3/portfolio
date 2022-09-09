@@ -5,8 +5,6 @@ Github Flow를 브랜치 전략으로 선택했기 때문에 CI에 대한 구성
 
 ## 해결방안
 ### Github Actions
-![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FXVHRQ%2Fbtq5t1899Cg%2FKmSsIX2YCZY6x1KKTtEiIk%2Fimg.png)
-
 Github Actions은 Github 저장소를 기반으로 소프트웨어 개발 Workflow를 자동화 할 수 있는 도구입니다. 간단하게 말하자면 Github에서 직접 제공하는 CI/CD 도구라고 할 수 있습니다. 
 
 Workflow는 Github 저장소에서 발생하는 build, test, package, release, deploy 등 다양한 이벤트를 기반으로 직접 원하는 Workflow를 만들 수 있습니다.Workflow는 Runners라고 불리는 Github에서 호스팅 하는 Linux, macOS, Windows 환경에서 실행된다. 그리고 이 Runners를 사용자가 직접 호스팅하는 환경에서 직접 구동시킬 수도 있습니다.
@@ -43,6 +41,7 @@ CI/CD 자동화를 위한 WorkFlow를 구현하기 위해선 Jenkins와 같은 �
 name: Java CI with Gradle
 
 on:
+  # main 브랜치에 대한 PR이 올라오는 경우에 해당 workflow를 실행
   pull_request:
     branches: [ main ]
 
@@ -52,28 +51,21 @@ permissions:
 jobs:
   build:
 
+    # CI 과정은 ubuntu 서버에서 동작
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set Up MySQL
-      uses: samin/mysql-action@v1
-      with:
-        host port: 3306
-        container port: 3306
-        character set server: 'utf8'
-        mysql database: 'soldout_db'
-        mysql password: ${{ secrets.DB_PASSWORD }}
-        mysql user: 'soldout'
-        mysql root password: ${{ secrets.ROOT_PASSWORD }}
 
     - uses: actions/checkout@v3
 
+    # JDK 설치
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
 
+    # Build 과정을 수행
     - name: Build with Gradle
       uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
       with:
@@ -81,7 +73,7 @@ jobs:
 
 ```
 
-위처럼 yml 파일로 workflow 정의해두고 프로젝트에 파일을 포함시켜두면 Github 저장소 내에서 CI에 대한 관리를 할 수 있도록 구성할 수 있습니다.
+github actions는 마켓 플레이스에서 사용자가 원하는 동작에 대한 코드를 제공해줘 손 쉽게 위와 같은 yml 파일을 구성할 수 있습니다. 위처럼 workflow 정의해두고 프로젝트에 파일을 포함시켜두면 Github 저장소 내에서 CI에 대한 관리를 할 수 있도록 구성할 수 있습니다.
 
 ## 마치며
 코드 작성 외적인 작업이지만 꽤 많은 시간을 소요하게 되는 테스트 및 빌드 과정에 대해 자동화 구성을 해보기 위해 Jenkins와 Github Actions의 차이를 비교해보면서 **효율적인 업무 환경을 구성해보는 이점**을 가져오면서 **현재 프로젝트 상황에 적합한 방법을 선정해보는 경험**을 해볼 수 있었습니다.
