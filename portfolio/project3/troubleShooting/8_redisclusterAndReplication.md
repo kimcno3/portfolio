@@ -30,7 +30,7 @@ Replication 구조는 이전 프로젝트에서도 다루었듯이 서버 다운
 
 만약 Master 노드 서버가 다운될 경우 Slave 서버가 Master 서버에 대한 데이터를 이어 받고 Master 서버로 대체되어 데이터 처리에 대한 문제가 없도록 구성했습니다.
 
-### 작성 코드
+### 3. 작성 코드
 
 #### 노드별 conf 파일
 ```
@@ -217,4 +217,4 @@ Redis 구성 클래스도 application.yml에서 저장한 노드들의 주소값
 - https://co-de.tistory.com/24
 - https://daddyprogrammer.org/post/1601/redis-cluster/
 - https://xzio.tistory.com/1599
-- https://brunch.co.kr/@springboot/218 제일 중요!
+- https://brunch.co.kr/@springboot/218
