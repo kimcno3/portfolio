@@ -8,7 +8,7 @@
 ### 1. Github Actions
 > Github Actions에 대한 정보와 특징은 [CI 툴로 Github Actions를 선택했던 이유](https://github.com/kimcno3/resume/blob/main/portfolio/project2/troublesShooting/4_ci.md)와 동일합니다.
 
-이번 글에선 Github Actions가 구성ㅇ하는데 알아야 했던 핵심 개념들에 대해 적어봤습니다.
+이번 글에선 Github Actions가 구성하는데 알아야 했던 핵심 개념들에 대해 적어봤습니다.
 
 ### 2. Workflows
 GitHub Actions에서 가장 상위 개념인 워크플로우(Workflow, 작업 흐름)는 쉽게 말해 자동화 해놓은 작업 과정이라고 볼 수 있습니다. 워크플로우는 코드 저장소 내에서 .github/workflows 폴더 아래에 위치한 YAML 파일로 설정하며, 하나의 코드 저장소에는 여러 개의 워크플로우, 즉 여러 개의 YAML 파일을 생성할 수 있습니다.
@@ -16,8 +16,22 @@ GitHub Actions에서 가장 상위 개념인 워크플로우(Workflow, 작업 �
 이 워크플로우 YAML 파일에는 크게 2가지를 정의해야 하는데, 첫번째는 `on` 속성을 통해서 해당 워크플로우가 언제 실행되는지를 정의합니다.
 
 예를 들어, 코드 저장소의 main 브랜치에 push 이벤트가 발생할 때 마다 워크플로우를 실행하려면 다음과 같이 설정해줍니다.
+```yaml
+name: Java CI with Gradle
+
+on:
+  pull_request:
+    branches: [ main ]
+```
 
 또는 사용자가 수동으로 워크플로우를 실행시키고 싶은 경우엔 `workflow_dispatch` 를 사용해 원하는 브랜치에서 원하는 시점에 워크플로우를 실행시킬 수 있습니다.
+
+```yaml
+name: Java CI with Gradle
+
+on:
+  workflow_dispatch
+```
 
 ### 3. Jobs
 GitHub Actions에서 작업(Job)이란 독립된 가상 머신(machine) 또는 컨테이너(container)에서 돌아가는 하나의 처리 단위를 의미합니다. 하나의 워크플로우는 여러 개의 작업으로 구성되며 적어도 하나의 작업은 있어야 합니다.그리고 모든 작업은 기본적으로 동시에 실행되며 필요 시 작업 간에 의존 관계를 설정하여 작업이 실행되는 순서를 제어할 수도 있습니다.
