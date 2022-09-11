@@ -15,6 +15,7 @@
 ### MSA
 
 ### 아키텍처 설계 도안
+<p align="center"><img width="864" alt="스크린샷 2022-09-11 오전 3 22 01" src="https://user-images.githubusercontent.com/77563468/189536597-5e047d5e-bd85-4011-8044-e70284c2e22b.png"></p>
 
 ## 마치며
 
