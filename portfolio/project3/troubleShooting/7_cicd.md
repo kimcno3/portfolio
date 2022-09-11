@@ -219,4 +219,5 @@ Github Actions를 통해 수정된 jar 파일을 수동으로 aws 서버로 전�
 ## 참고자료
 - https://www.daleseo.com/github-actions-basics/
 - https://veluxer62.github.io/tutorials/tutorial-of-continuous-deployment-with-git-actions/
+- https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-vpc-secure-management-bastion-server
 - https://github.com/marketplace/actions/ssh-remote-commands#how-to-connect-remote-server-using-proxycommand
